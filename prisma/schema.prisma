@@ -17,8 +17,10 @@ model cars {
   year         Int
   price        Decimal
   description  String
+  car_type_id  Int       @db.UnsignedInt
   created_at   DateTime  @default(now())
   updated_at   DateTime? @updatedAt
+  car_type     car_types @relation(fields: [car_type_id], references: [id])
 }
 
 model car_types {
@@ -26,4 +28,5 @@ model car_types {
   name       String
   created_at DateTime  @default(now())
   updated_at DateTime? @updatedAt
+  cars       cars[]
 }
