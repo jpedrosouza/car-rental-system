@@ -23,6 +23,7 @@ model cars {
   updated_at   DateTime?  @updatedAt
   car_type     car_types  @relation(fields: [car_type_id], references: [id])
   customers    customers? @relation(fields: [customer_id], references: [id])
+  rents        rents[]
 }
 
 model car_types {
@@ -43,4 +44,18 @@ model customers {
   created_at DateTime  @default(now())
   updated_at DateTime? @updatedAt
   cars       cars[]
+  rents      rents[]
+}
+
+model rents {
+  id          Int       @id @default(autoincrement()) @db.UnsignedInt
+  customer_id Int       @db.UnsignedInt
+  car_id      Int       @db.UnsignedInt
+  price       Decimal
+  start_date  DateTime
+  end_date    DateTime
+  created_at  DateTime  @default(now())
+  updated_at  DateTime? @updatedAt
+  customer    customers @relation(fields: [customer_id], references: [id])
+  car         cars      @relation(fields: [car_id], references: [id])
 }
