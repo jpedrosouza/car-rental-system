@@ -11,21 +11,35 @@ datasource db {
 }
 
 model cars {
-  id           Int       @id @default(autoincrement()) @db.UnsignedInt
+  id           Int        @id @default(autoincrement()) @db.UnsignedInt
   manufacturer String
   model        String
   year         Int
   price        Decimal
   description  String
-  car_type_id  Int       @db.UnsignedInt
-  created_at   DateTime  @default(now())
-  updated_at   DateTime? @updatedAt
-  car_type     car_types @relation(fields: [car_type_id], references: [id])
+  car_type_id  Int        @db.UnsignedInt
+  customer_id  Int?       @db.UnsignedInt
+  created_at   DateTime   @default(now())
+  updated_at   DateTime?  @updatedAt
+  car_type     car_types  @relation(fields: [car_type_id], references: [id])
+  customers    customers? @relation(fields: [customer_id], references: [id])
 }
 
 model car_types {
   id         Int       @id @default(autoincrement()) @db.UnsignedInt
   name       String
+  created_at DateTime  @default(now())
+  updated_at DateTime? @updatedAt
+  cars       cars[]
+}
+
+model customers {
+  id         Int       @id @default(autoincrement()) @db.UnsignedInt
+  name       String
+  email      String
+  phone      String
+  address    String
+  cpf        String
   created_at DateTime  @default(now())
   updated_at DateTime? @updatedAt
   cars       cars[]
