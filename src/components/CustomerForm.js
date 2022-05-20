@@ -12,7 +12,7 @@ export default function CustomerForm({ action }) {
 
     const method = action == "STORE" ? "POST" : "PUT";
 
-    const response = await fetch("/api/customer", {
+    const response = await fetch("/api/admin/customer", {
       method: method,
       headers: {
         "Content-Type": "application/json",
@@ -28,6 +28,8 @@ export default function CustomerForm({ action }) {
 
     if (response.status == 200) {
       window.location.href = "/admin/customers";
+    } else {
+      alert("Ocorreu um erro ao cadastrar o cliente");
     }
   };
 
