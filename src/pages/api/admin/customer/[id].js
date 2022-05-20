@@ -29,7 +29,7 @@ async function getHandler(req, res) {
   const { id } = req.query;
   const customer = await prisma.customers.findUnique({
     where: {
-      id: id,
+      id: Number(id),
     },
   });
 
@@ -47,7 +47,7 @@ async function putHandler(req, res) {
   const data = req.body;
   const customer = await prisma.customers.update({
     where: {
-      id: id,
+      id: Number(id),
     },
     data: data,
   });
@@ -64,7 +64,7 @@ async function putHandler(req, res) {
 async function deleteHandler(req, res) {
   const { id } = req.query;
 
-  await prisma.customers.delete({ where: { id: id } });
+  await prisma.customers.delete({ where: { id: Number(id) } });
 
   return res.status(200).json({ message: "Customer deleted" });
 }
