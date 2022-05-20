@@ -1,18 +1,19 @@
 import { useState } from "react";
 
-export default function CustomerForm({ action }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [cpf, setCpf] = useState("");
+export default function CustomerForm({ action, createdId, createdName, createdEmail, createdPhone, createdAddress, createdCpf }) {
+  const [name, setName] = useState(createdName);
+  const [email, setEmail] = useState(createdEmail);
+  const [phone, setPhone] = useState(createdPhone);
+  const [address, setAddress] = useState(createdAddress);
+  const [cpf, setCpf] = useState(createdCpf);
 
   const submitFormHandler = async (e) => {
     e.preventDefault();
 
+    const url = action == 'STORE' ? '/api/admin/customer' : `/api/admin/customer/${createdId}`;
     const method = action == "STORE" ? "POST" : "PUT";
 
-    const response = await fetch("/api/admin/customer", {
+    const response = await fetch(url, {
       method: method,
       headers: {
         "Content-Type": "application/json",
@@ -82,7 +83,7 @@ export default function CustomerForm({ action }) {
       ></input>
       <input
         type="submit"
-        value="Cadastrar"
+        value={action == 'STORE' ? "Cadastrar" : "Atualizar"}
         className="w-full h-12 mt-5 rounded-lg bg-blue-500 transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 text-white cursor-pointer"
       />
     </form>
