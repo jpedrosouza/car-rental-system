@@ -1,6 +1,24 @@
 import Head from "next/head";
+import { useState } from "react";
 
-export default function Customers({ customers }) {
+export default function Customers({ receivedCustomers }) {
+  const [customers, setCustomers] = useState(receivedCustomers);
+
+  const deleteCustomer = async (id) => {
+    const response = await fetch(`/api/admin/customer/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.status == 200) {
+      /**
+       * Delete from customers array when the customer is deleted
+       */
+
+      const newCustomers = customers.filter((customer) => customer.id != id);
+      setCustomers(newCustomers);
+    }
+  };
+
   return (
     <div className="w-screen h-screen">
       <Head>
@@ -8,7 +26,7 @@ export default function Customers({ customers }) {
       </Head>
 
       <main className="w-screen h-screen flex flex-col justify-center items-center">
-        <div className="w-2/3 h-full flex flex-row jusfity-center items-center">
+        <div className="w-4/5 h-full flex flex-row jusfity-center items-center">
           <div className="mt-10 h-3/5 flex justify-center items-center">
             <div className="-my-2 overflow-y-auto sm:-mx-6 lg:-mx-8">
               <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -90,6 +108,11 @@ export default function Customers({ customers }) {
                               Editar
                             </a>
                           </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a className="text-red-600 hover:text-indigo-900">
+                              Apagar
+                            </a>
+                          </td>
                         </tr>
                       ))}
                     </tbody>
@@ -110,7 +133,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      customers,
+      receivedCustomers: customers,
     },
   };
 }
