@@ -24,7 +24,7 @@ export default function Home() {
           </div>
         </div>
         <div className="mt-20 mb-20 flex flex-col justify-center items-center">
-          <h1 className="text-black text-xl">Escolha um modelo</h1>
+          <h1 className="text-black text-xl">Nossos modelos</h1>
           <div className="w-1/2 mt-10 flex flex-row flex-wrap justify-center items-center">
             <div className="w-52 h-56 mr-5 mb-5 drop-shadow-2xl flex flex-col justify-center items-center bg-white rounded-md opacity-100 cursor-pointer">
               <h1 className="p-2 font-thin text-black mb-5 text-center">
