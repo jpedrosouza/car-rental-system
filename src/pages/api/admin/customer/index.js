@@ -25,7 +25,9 @@ export default async function handler(req, res) {
  */
 
 async function getHandler(req, res) {
-  const customers = await prisma.customers.findMany();
+  const customers = await prisma.customers.findMany({
+    orderBy: { name: "asc" },
+  });
 
   return res.status(200).json(customers);
 }
