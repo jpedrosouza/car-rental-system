@@ -12,13 +12,13 @@ datasource db {
 
 model cars {
   id           Int        @id @default(autoincrement()) @db.UnsignedInt
+  car_type_id  Int        @db.UnsignedInt
+  customer_id  Int?       @db.UnsignedInt
   manufacturer String
   model        String
   year         Int
   price        Decimal
   description  String
-  car_type_id  Int        @db.UnsignedInt
-  customer_id  Int?       @db.UnsignedInt
   created_at   DateTime   @default(now())
   updated_at   DateTime?  @updatedAt
   car_type     car_types  @relation(fields: [car_type_id], references: [id])
