@@ -19,6 +19,10 @@ export default function Customers({ receivedCustomers }) {
     }
   };
 
+  const navigateToAddCustomerPage = () => {
+    window.location.href = "/admin/customers/customer";
+  };
+
   return (
     <div className="w-screen h-screen">
       <Head>
@@ -26,8 +30,11 @@ export default function Customers({ receivedCustomers }) {
       </Head>
 
       <main className="w-screen h-screen flex flex-col justify-center items-center">
-        <div className="w-4/5 h-full flex flex-row jusfity-center items-center">
-          <div className="mt-10 h-3/5 flex justify-center items-center">
+        <div className="w-4/5 h-screen flex flex-col jusfity-center items-center">
+          <button onClick={navigateToAddCustomerPage} className="mt-10 p-2 border rounded-full self-end ease-in-out duration-300 hover:shadow-xl">
+            Adicionar Cliente
+          </button>
+          <div className="mt-5 flex justify-center items-center">
             <div className="-my-2 overflow-y-auto sm:-mx-6 lg:-mx-8">
               <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
