@@ -39,8 +39,8 @@ export default function CarForm({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        car_type_id: Number(carTypeId),
-        customer_id: Number(customerId),
+        car_type_id: carTypeId == undefined ? null : Number(carTypeId),
+        customer_id: customerId == undefined ? null : Number(customerId),
         manufacturer: manufacturer,
         model: model,
         year: Number(year),
