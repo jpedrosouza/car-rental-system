@@ -46,7 +46,6 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      car: responseCarJson,
       createdAllCarTypes: responseCarTypesJson,
       createdAllCustomers: responseCustomerJson,
     },
