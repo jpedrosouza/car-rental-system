@@ -20,7 +20,7 @@ export default function Home() {
               <span className="text-white font-thin">Aluguel de veículos</span>
             </div>
 
-            <Image width={50} height={50} src={'/assets/gifs/mouse_scroll_animation.gif'}></Image>
+            <Image alt="Scroll down animation" width={50} height={50} src={'/assets/gifs/mouse_scroll_animation.gif'}></Image>
           </div>
         </div>
         <div className="mt-20 mb-20 flex flex-col justify-center items-center">
@@ -31,6 +31,7 @@ export default function Home() {
                 Grupo A - Compacto (ECMN)
               </h1>
               <Image
+                alt="Car image"
                 width={180}
                 height={101}
                 src={"/assets/images/cars/uno_1.0.png"}
@@ -41,6 +42,7 @@ export default function Home() {
                 Grupo B - Compactos com Ar (ECMR)
               </h1>
               <Image
+                alt="Car image"
                 width={180}
                 height={101}
                 src={"/assets/images/cars/kwid_1.0.png"}
@@ -51,6 +53,7 @@ export default function Home() {
                 Grupo C - Econômico Com Ar (EDMR)
               </h1>
               <Image
+                alt="Car image"
                 width={180}
                 height={101}
                 src={"/assets/images/cars/sandero_1.0.png"}
@@ -61,6 +64,7 @@ export default function Home() {
                 Grupo CK - Econômico C/ Ar Fast (HDMR)
               </h1>
               <Image
+                alt="Car image"
                 width={180}
                 height={101}
                 src={"/assets/images/cars/onix_1.0.png"}
@@ -71,6 +75,7 @@ export default function Home() {
                 Grupo CE - Econômico Especial C/ar (HCMR)
               </h1>
               <Image
+                alt="Car image"
                 width={180}
                 height={101}
                 src={"/assets/images/cars/argo_1.0.png"}
@@ -81,6 +86,7 @@ export default function Home() {
                 Grupo CS - Econômico Sedan C/ar (EXMR)
               </h1>
               <Image
+                alt="Car image"
                 width={180}
                 height={101}
                 src={"/assets/images/cars/prisma_1.0.png"}
